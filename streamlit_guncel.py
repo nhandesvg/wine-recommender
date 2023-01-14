@@ -18,7 +18,7 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 # st.image(image, width=150)
 
 #df = pd.read_csv("/Users/handesevgi/PycharmProjects/pythonProject2/Proje/preprocessed_wine_df.csv")
-df=pd.read_csv("/Users/handesevgi/hande-github/wine-recommender/preprocessed_wine_df.csv.zip", compression='zip', header=0, sep=',', quotechar='"'))
+df=pd.read_csv("/Users/handesevgi/hande-github/wine-recommender/preprocessed_wine_df.csv.zip", compression='zip', header=0, sep=',', quotechar='"')
 df.head()
 
 list_country = df["country"].unique()
