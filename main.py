@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import fuzzywuzzy
 from fuzzywuzzy import process
+import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
 from nltk.corpus import stopwords
