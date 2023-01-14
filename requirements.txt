@@ -2,3 +2,9 @@ openpyxl
 nltk
 gensim
 scikit-learn
+matplotlib
+numpy
+matplotlib
+seaborn
+re
+difflib
