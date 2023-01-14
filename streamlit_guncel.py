@@ -2,7 +2,7 @@ import pandas as pd
 from PIL import Image
 import streamlit as st
 import pickle
-!conda to install openpyxl
+!pipenv install openpyxl
 import json
 # python -m pip install -U scikit-image
 # import skimage
