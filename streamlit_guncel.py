@@ -8,6 +8,8 @@ import json
 # print(skimage.__version__)
 # pip install zipfile36
 import zipfile
+import json
+from urllib.request import urlopen
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
