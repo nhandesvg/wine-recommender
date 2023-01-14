@@ -4,6 +4,5 @@ gensim
 scikit-learn
 matplotlib
 numpy
-matplotlib
 seaborn
 difflib
