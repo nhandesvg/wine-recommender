@@ -3,3 +3,4 @@ nltk
 gensim
 scikit-learn
 matplotlib
+fuzzywuzzy
