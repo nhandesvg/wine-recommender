@@ -1,5 +1,4 @@
 openpyxl
 nltk
 gensim
-sklearn
-sklearn.feature_extraction.text
+scikit-learn
