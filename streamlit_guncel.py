@@ -14,14 +14,14 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 # image = Image.open('/Users/oykucankusbulan/PycharmProjects/pythonProject4/Miuul Wine Proje/Wine Logo.jpeg')
 # st.image(image, width=150)
 
-df = pd.read_csv("/Users/handesevgi/PycharmProjects/pythonProject2/Proje/preprocessed_wine_df.csv")
+df = pd.read_csv("preprocessed_wine_df.csv")
 df.head()
 
 list_country = df["country"].unique()
 
 print(list_country)
 
-descriptor_mapping = pd.read_excel('/Users/handesevgi/PycharmProjects/pythonProject2/Proje/descriptor_mapping.xlsx').set_index(
+descriptor_mapping = pd.read_excel('descriptor_mapping.xlsx').set_index(
     'raw descriptor')
 
 descriptor_mapping.head(10)
