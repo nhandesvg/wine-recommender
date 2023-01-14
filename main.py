@@ -3,7 +3,9 @@ import pandas as pd
 import numpy as np
 import fuzzywuzzy
 from fuzzywuzzy import process
-
+nltk.download('stopwords')
+nltk.download('punkt')
+from nltk.corpus import stopwords
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
