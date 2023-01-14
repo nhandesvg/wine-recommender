@@ -6,5 +6,4 @@ matplotlib
 numpy
 matplotlib
 seaborn
-re
 difflib
