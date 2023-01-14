@@ -2,9 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-#pip install -r requirements.txt
 
-#Ayarlar
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
@@ -17,22 +15,21 @@ warnings.filterwarnings("ignore")
 
 
 
-#cd /Users/havvaserim/Desktop/mywineproject/Streamlit
-#streamlit run main.py
+
 import json
 from PIL import Image
 
 #st.title("Hello World")
 st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="centered") #mutlaka en başta olmak zorunda
 
-image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
-st.image(image, width=150)
+#image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
+#st.image(image, width=150)
 
 st.title("Wine Recommender 🍷")
 #dfi okut
 #Daha önceden tokenize ve lemmatize edilmiş, noktalama işaretleri kaldırılmıs ve küçük harfe dönüştrülmüş df okutuldu.
 
-wine_df=pd.read_csv("/Users/havvaserim/PycharmProjects/pythonProject/ProjectforMiuul/preprocessed_wine_df_10_01_23.csv", index_col="Unnamed: 0")
+wine_df=pd.read_csv("preprocessed_wine_df.csv")
 wine_df.head()
 
 list_country = wine_df["country"].unique()
