@@ -3,6 +3,3 @@ nltk
 gensim
 scikit-learn
 matplotlib
-numpy
-seaborn
-difflib
