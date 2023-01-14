@@ -2,6 +2,7 @@ import pandas as pd
 from PIL import Image
 import streamlit as st
 import pickle
+pip install openpyxl
 import openpyxl
 import json
 # python -m pip install -U scikit-image
