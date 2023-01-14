@@ -11,6 +11,10 @@ import nltk
 import zipfile
 import json
 from urllib.request import urlopen
+nltk.download('stopwords')
+nltk.download('punkt')
+from nltk.corpus import stopwords
+
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
