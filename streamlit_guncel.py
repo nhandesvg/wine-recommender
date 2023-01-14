@@ -19,7 +19,7 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 # image = Image.open('/Users/oykucankusbulan/PycharmProjects/pythonProject4/Miuul Wine Proje/Wine Logo.jpeg')
 # st.image(image, width=150)
 
-df=pd.read_csv("wine-recommender/main/preprocessed_wine_df.csv.zip", compression='zip')
+df=pd.read_csv("https://github.com/nhandesvg/wine-recommender.main/preprocessed_wine_df.csv.zip.git, compression='zip')
 df.head()
 
 list_country = df["country"].unique()
