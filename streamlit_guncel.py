@@ -4,8 +4,8 @@ import streamlit as st
 import pickle
 import json
 # python -m pip install -U scikit-image
-import skimage
-print(skimage.__version__)
+# import skimage
+# print(skimage.__version__)
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', None)
