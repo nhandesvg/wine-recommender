@@ -71,8 +71,7 @@ stemmer = PorterStemmer()
 
 
 
-
-wine_df=pd.read_csv("datasets/preprocessed_wine_df_10_01_23.csv", index_col="Unnamed: 0")
+wine_df=pd.read_csv("preprocessed_wine_df.csv", index_col="Unnamed: 0")
 wine_df.head()
 
 list_country = wine_df["country"].unique()
