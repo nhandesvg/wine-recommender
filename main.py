@@ -1,3 +1,5 @@
+git pull --rebase origin main
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -18,10 +20,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-
-
 import json
 from PIL import Image
+
+
 
 #st.title("Hello World")
 st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="centered") #mutlaka en başta olmak zorunda
