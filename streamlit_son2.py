@@ -77,8 +77,8 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 
 st.title("Wine Recommender 🍷")
 
-image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
-st.image(image, width=150)
+#image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
+#st.image(image, width=150)
 
 wine_df = pd.read_csv("preprocessed_wine_df.csv")
 
