@@ -1,5 +1,4 @@
 import streamlit as st
-streamlit run main.py
 import pandas as pd
 import numpy as np
 import fuzzywuzzy
