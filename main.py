@@ -1,5 +1,3 @@
-git pull --rebase origin main
-pip install psrecord
 import streamlit as st
 streamlit run main.py
 import pandas as pd
