@@ -80,8 +80,7 @@ st.title("Wine Recommender 🍷")
 image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
 st.image(image, width=150)
 
-wine_df = pd.read_csv("/Users/havvaserim/Desktop/mywineproject/Streamlit/preprocessed_wine_df_10_01_23.csv")
-
+wine_df = pd.read_csv("preprocessed_wine_df.csv")
 
 ###
     #
