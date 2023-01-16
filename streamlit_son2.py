@@ -1,4 +1,7 @@
 import streamlit as st
+import torch
+model = torch.load("streamlit_son2.py")
+
 import pandas as pd
 import os
 import pandas as pd
