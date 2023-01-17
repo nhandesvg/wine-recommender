@@ -80,11 +80,9 @@ st.title("Wine Recommender ")
 #image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
 #st.image(image, width=150)
 
-wine_df = pd.read_csv("preprocessed_wine_df_10_01_23.csv")
-
+wine_df=pd.read_csv("preprocessed_wine_df_10_01_23.csv.zip", index_col="Unnamed: 0")
 
 tab1, tab2, tab3 = st.tabs(["Unsupervised", "Variety", "Title"])
-wine_df=pd.read_csv("datasets/preprocessed_wine_df_10_01_23.csv", index_col="Unnamed: 0")
 
 with tab3:
     st.header("Recommend with Title")
@@ -96,7 +94,7 @@ with tab3:
     wine_df["description"] = wine_df["description"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
 
 
-    list_title = wine_df["title"].head(25)
+    list_title = wine_df["title"]
 
 
     title_option = st.selectbox(
@@ -149,7 +147,6 @@ with tab2:
 
 # Üzüm çeşitliliği bazında review sayısı hesaplandı, gözlemlendi.
     review_counts = new_df['variety_new'].value_counts()
-    review_counts.head()
 
 # 1'den fazla yorumlanan üzüm çeşitlerinin listesi hazırlandı.
     variety_multi_reviews = review_counts[review_counts > 1].index.tolist()
@@ -162,9 +159,7 @@ with tab2:
 # ngram=range(1,2): unigrams ve bigrams ifadelerin yakalanması için
 
     variety_description= new_df.set_index("variety_new")
-    variety_description.head()
-#variety indekse alındı.
-
+   
     variety_description_2 = pd.DataFrame(columns=["variety_new","description"])
 
 #CountVectorizer object cv olarak tanımlandı.
@@ -311,24 +306,7 @@ with tab1:
 
 
     columns=vectorizer.get_feature_names_out()
-
-
-# X_train=X_train.reshape(-1,1)
-    from yellowbrick.cluster import KElbowVisualizer
-#k_clusters = 18
-
-#score = []
-#for i in range(1,k_clusters + 1):
- #   kmeans = KMeans(n_clusters=i,init='k-means++',max_iter=300,n_init=5,random_state=0)
-  #  kmeans.fit(X_train)
-   # score.append(kmeans.inertia_)
-#plt.plot(range(1,k_clusters + 1 ),score)
-#plt.title('The Elbow Method')
-#plt.xlabel('Number of clusters')
-#plt.ylabel('Score')
-#plt.savefig('elbow.png')
-#plt.show()
-
+    
 
     k_clusters = 13
 
@@ -361,81 +339,39 @@ with tab1:
 
 
 
-#df_new["title"] = df_new["title"].apply(prepare_text)
-
-
-#pred2 = model.predict(vectorizer.transform(new_docs))
-
-# pred2 = model.predict(vectorizer.transform(new_docs2))
-
-
-#user_input = [str(st.text_area('Enter key words for wine i.e fresh, red, black, tannin etc. ',''))]
-
-
-
-#new_docs2 = ['melon vanilla acidic tannin fresh fruit crisp']
     @st.cache(allow_output_mutation=True)
     def get_data():
         return []
 
-
-    #user_input = st.text_input("Enter key words for wine i.e fresh, red, black, tannin etc.",'melon tannic asidic fruit lime')
-
-    #if st.button("Add text"):
-     #   get_data().append(user_input)
     
     form = st.form(key='my_form')
     user_input = form.text_input(label='Enter key words for wine i.e fresh, red, black, tannin etc.')
     submit_button = form.form_submit_button(label='Submit')
+    if submit_button:
+        get_data().append(user_input)
     
+        get_data().append(user_input)
+        data = [get_data()[0]]
     
-    get_data().append(user_input)
-    
-    data = [get_data()[0]]
-    
+        pred3 = model.predict(vectorizer.transform(data))
+        ww = df_new_clusters[pred3[0]].tolist()
 
-    pred3 = model.predict(vectorizer.transform(data))
-    ww = df_new_clusters[pred3[0]].tolist()
+        df=pd.read_csv("winemag-data-130k-v2.csv.zip")
 
-
-    df=pd.read_csv("winemag-data-130k-v2.csv.zip")
-
-    desc = df.reset_index(drop=True)
+        desc = df.reset_index(drop=True)
 
     
 
-    seq = difflib.SequenceMatcher()
+        seq = difflib.SequenceMatcher()
 
 
-    def ration(ww,df):    
-        title=[]
-        n = len(desc["description"])
-        desc["description"] = desc["description"].apply(prepare_text)
-        for i in range(n):
-            seq.set_seqs(ww,desc["description"][i].split())
-            if seq.ratio()*100 > 10:
-                title.append(desc["title"][i])
-        return pd.DataFrame(title[1:11])
-    st.write(ration(ww,desc["description"]))
-
-        #if st.button('Recommend my Wine from key words'):
-         #   st.write(ration(ww,desc["description"]))
-
-
-    
-
-   
-    #st.write('Your selection for aroma is ', aroma_option)
-
-
-    
-
-   
-
-    #if st.button('Recommend my Wine with unsupervised'):
-        #print("Recommended with unsupervised ")
-        # unsuper.pred_n()
-
-
-
-
+        def ration(ww,df):    
+            title=[]
+            n = len(desc["description"])
+            desc["description"] = desc["description"].apply(prepare_text)
+            for i in range(n):
+                seq.set_seqs(ww,desc["description"][i].split())
+                if seq.ratio()*100 > 10:
+                    title.append(desc["title"][i])
+            return pd.DataFrame(title[1:11])
+        st.write(ration(ww,desc["description"]))
