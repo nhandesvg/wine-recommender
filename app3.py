@@ -360,7 +360,7 @@ with tab1:
         ww = df_new_clusters[pred3[0]].tolist()
         zf1=zipfile.ZipFile('winemag-data-130k-v2.csv.zip','r')
         zipfile.ZipFile.namelist(zf1)
-        df=pd.read_csv(zf1.open('winemag-data-130k-v2.csv')
+        df=pd.read_csv(zf1.open('winemag-data-130k-v2.csv'))
 
         desc = df.reset_index(drop=True)
 
