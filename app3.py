@@ -77,8 +77,13 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 
 st.title("Wine Recommender ")
 
+zf=zipfile.ZipFile('prepw.csv.zip','r')
 
-wine_df=pd.read_csv("prepw.csv.zip", compression='zip', index_col="Unnamed: 0")
+zipfile.ZipFile.namelist(zf)
+
+wine_df = pd.read_csv(zf.open('prepw.csv'))
+
+#wine_df=pd.read_csv("prepw.csv.zip", compression='zip', index_col="Unnamed: 0")
 
 tab1, tab2, tab3 = st.tabs(["Unsupervised", "Variety", "Title"])
 
@@ -353,10 +358,12 @@ with tab1:
     
         pred3 = model.predict(vectorizer.transform(data))
         ww = df_new_clusters[pred3[0]].tolist()
-
-        df=pd.read_csv("winemag-data-130k-v2.csv.zip", compression='zip')
+        zf1=zipfile.ZipFile('winemag-data-130k-v2.csv.zip','r')
+        zipfile.ZipFile.namelist(zf1)
+        df=pd.read_csv(zf1.open('winemag-data-130k-v2.csv')
 
         desc = df.reset_index(drop=True)
+
 
     
 
