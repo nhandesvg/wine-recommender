@@ -249,7 +249,7 @@ with tab2:
             else:
                 key_words_str = des
 
-            new_row = {"similar wines": g_variety, "Top 6 common words in wine reviews": key_words_str}
+            new_row = {"similar wines": g_variety, "Top 6 common features in wine reviews": key_words_str}
             df = df.append(new_row, ignore_index=True)
 
         df.set_index("similar wines")
@@ -348,7 +348,7 @@ with tab1:
 
     
     form = st.form(key='my_form')
-    user_input = form.text_input(label='Enter key words for wine i.e fresh, red, black, tannin etc.')
+    user_input = form.text_input(label='Enter key words for wine i.e fresh apple black tannin acid etc.')
     submit_button = form.form_submit_button(label='Submit')
     if submit_button:
         get_data().append(user_input)
@@ -376,7 +376,7 @@ with tab1:
             desc["description"] = desc["description"].apply(prepare_text)
             for i in range(n):
                 seq.set_seqs(ww,desc["description"][i].split())
-                if seq.ratio()*100 > 10:
+                if seq.ratio()*100 > 20:
                     title.append(desc["title"][i])
             return pd.DataFrame(title[1:11])
         st.write(ration(ww,desc["description"]))
