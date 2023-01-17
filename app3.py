@@ -30,7 +30,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
 from sklearn.cluster import KMeans
-from yellowbrick.cluster import KElbowVisualizer
+#from yellowbrick.cluster import KElbowVisualizer
 from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 
@@ -80,22 +80,8 @@ st.title("Wine Recommender ")
 #image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
 #st.image(image, width=150)
 
-wine_df = pd.read_csv("datasets/preprocessed_wine_df_10_01_23.csv")
+wine_df = pd.read_csv("preprocessed_wine_df_10_01_23.csv.zip")
 
-
-###
-    #
-    # model_selection = st.radio(
-    #     "Recommend with ---- ",
-    #     ('Title', 'Variety', 'Unsupervised'))
-    #
-    # if model_selection == 'Title':
-    #     st.write('Recommend with Title ')
-    # elif model_selection == 'Variety':
-    #     st.write("Recommend with Variety")
-    # else:
-    #     st.write("Unsupervised Model")
-    #     ###
 
 tab1, tab2, tab3 = st.tabs(["Unsupervised", "Variety", "Title"])
 wine_df=pd.read_csv("datasets/preprocessed_wine_df_10_01_23.csv", index_col="Unnamed: 0")
@@ -111,11 +97,12 @@ with tab3:
 
 
     list_title = wine_df["title"].head(25)
-#print(list_title)
+
 
     title_option = st.selectbox(
     'Please select a wine name, then enjoy your recommended wine ',
     list_title)
+
 #MODEL 1:
 #Şarabın ismi girildiğinde, descriptiona benzerliğine göre ilk 3 şarap öneren fonk:
 
