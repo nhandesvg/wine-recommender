@@ -30,7 +30,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
 from sklearn.cluster import KMeans
-#from yellowbrick.cluster import KElbowVisualizer
+from yellowbrick.cluster import KElbowVisualizer
 from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 
@@ -77,10 +77,8 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 
 st.title("Wine Recommender ")
 
-#image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
-#st.image(image, width=150)
 
-wine_df=pd.read_csv("preprocessed_wine_df_10_01_23.csv.zip", index_col="Unnamed: 0")
+wine_df=pd.read_csv("prepw.csv.zip", index_col="Unnamed: 0")
 
 tab1, tab2, tab3 = st.tabs(["Unsupervised", "Variety", "Title"])
 
