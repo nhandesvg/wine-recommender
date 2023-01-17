@@ -378,5 +378,5 @@ with tab1:
                 seq.set_seqs(ww,desc["description"][i].split())
                 if seq.ratio()*100 > 20:
                     title.append(desc["title"][i])
-            return pd.DataFrame(title[1:11])
+            return pd.DataFrame(title[1:6])
         st.write(ration(ww,desc["description"]))
