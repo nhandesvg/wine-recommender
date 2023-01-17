@@ -8,7 +8,7 @@ import numpy as np
 import string
 from operator import itemgetter
 from collections import Counter, OrderedDict
-
+from zipfile import ZipFile
 
 import re
 import nltk
@@ -78,7 +78,7 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 st.title("Wine Recommender ")
 
 
-wine_df=pd.read_csv("prepw.csv.zip", index_col="Unnamed: 0")
+wine_df=pd.read_csv("prepw.csv.zip", compression='zip', index_col="Unnamed: 0")
 
 tab1, tab2, tab3 = st.tabs(["Unsupervised", "Variety", "Title"])
 
@@ -354,7 +354,7 @@ with tab1:
         pred3 = model.predict(vectorizer.transform(data))
         ww = df_new_clusters[pred3[0]].tolist()
 
-        df=pd.read_csv("winemag-data-130k-v2.csv.zip")
+        df=pd.read_csv("winemag-data-130k-v2.csv.zip", compression='zip')
 
         desc = df.reset_index(drop=True)
 
