@@ -348,7 +348,7 @@ with tab1:
 
     
     form = st.form(key='my_form')
-    user_input = form.text_input(label='Enter key words for wine i.e fresh apple black tannin acid etc.')
+    user_input = form.text_input(label='Enter key words for your wine i.e fresh apple black tannin acid etc.')
     submit_button = form.form_submit_button(label='Submit')
     if submit_button:
         get_data().append(user_input)
