@@ -80,7 +80,7 @@ st.title("Wine Recommender ")
 #image = Image.open("/Users/havvaserim/Desktop/mywineproject/Streamlit/winelogo.jpeg")
 #st.image(image, width=150)
 
-wine_df = pd.read_csv("preprocessed_wine_df_10_01_23.csv.zip")
+wine_df = pd.read_csv("preprocessed_wine_df_10_01_23.csv")
 
 
 tab1, tab2, tab3 = st.tabs(["Unsupervised", "Variety", "Title"])
@@ -398,7 +398,7 @@ with tab1:
     ww = df_new_clusters[pred3[0]].tolist()
 
 
-    df=pd.read_csv("datasets/winemag-data-130k-v2.csv")
+    df=pd.read_csv("winemag-data-130k-v2.csv.zip")
 
     desc = df.reset_index(drop=True)
 
