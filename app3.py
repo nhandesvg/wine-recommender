@@ -134,7 +134,7 @@ with tab3:
 
     if st.button('Recommend my Wine with Title'):
         #print("Recommended with title")
-        st.write("Recommended with title",recom_by_title(title_option, wine_df.reset_index(inplace=True)))
+        st.write("Recommended with title",recom_by_title(title_option, wine_df.reset_index(inplace=True))[1])
 
 with tab2:
     st.header("Recommend with Variety")
@@ -232,7 +232,7 @@ with tab2:
         wine_idx_list = [i[0] for i in sim_scores]
 
     # Çıktıyı df e çevir.
-        #df = pd.DataFrame(columns=["similar wines", "Top 6 common features in wine reviews"])
+        df = pd.DataFrame(columns=["similar wines", "Top 6 common words in wine reviews"])
 
         for wine_idx in wine_idx_list:
 
@@ -249,7 +249,7 @@ with tab2:
             else:
                 key_words_str = des
 
-            new_row = {"similar wines": g_variety, "Top 6 common features in wine reviews": key_words_str}
+            new_row = {"similar wines": g_variety, "Top 6 common words in wine reviews": key_words_str}
             df = df.append(new_row, ignore_index=True)
 
         df.set_index("similar wines")
