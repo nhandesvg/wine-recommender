@@ -232,7 +232,7 @@ with tab2:
         wine_idx_list = [i[0] for i in sim_scores]
 
     # Çıktıyı df e çevir.
-        df = pd.DataFrame(columns=["similar wines", "Top 6 common words in wine reviews"])
+        df = pd.DataFrame(columns=["similar wines", "Top 6 common features in wine reviews"])
 
         for wine_idx in wine_idx_list:
 
