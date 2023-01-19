@@ -89,7 +89,7 @@ tab1, tab2, tab3 = st.tabs(["Unsupervised", "Variety", "Title"])
 
 with tab3:
     st.header("Recommend with Title")
-   
+
     stop_words = set(stopwords.words("english"))
     stop_words.update(["drink", "now", "wine", "flavor", "flavors"])
 
@@ -134,7 +134,7 @@ with tab3:
 
     if st.button('Recommend my Wine with Title'):
         #print("Recommended with title")
-        st.write("Recommended with title",recom_by_title(title_option, wine_df))
+        st.write("Recommended with title",recom_by_title(title_option, wine_df.reset_index(inplace=True)))
 
 with tab2:
     st.header("Recommend with Variety")
@@ -146,7 +146,7 @@ with tab2:
 
 # Variety ve descriptiondan olusan bir df hazırlandı.
     new_df = pd.DataFrame({"variety_new": variety_new , "description": description})
-    
+
 
 # Üzüm çeşitliliği bazında review sayısı hesaplandı, gözlemlendi.
     review_counts = new_df['variety_new'].value_counts()
@@ -162,7 +162,7 @@ with tab2:
 # ngram=range(1,2): unigrams ve bigrams ifadelerin yakalanması için
 
     variety_description= new_df.set_index("variety_new")
-   
+
     variety_description_2 = pd.DataFrame(columns=["variety_new","description"])
 
 #CountVectorizer object cv olarak tanımlandı.
@@ -198,7 +198,7 @@ with tab2:
 #Checked
     variety_description_2=variety_description_2.set_index("variety_new")
     variety_description_2=variety_description_2.append(variety_description.loc[variety_single_reviews])
-    
+
 
     tfidf=TfidfVectorizer(stop_words="english", ngram_range=(2,2))
 # Descriptiondaki her kelime sayıldı, idf hesaplandı ve idf, tf ile çarpılarak tf-idf matrisi elde edildi.
@@ -232,7 +232,7 @@ with tab2:
         wine_idx_list = [i[0] for i in sim_scores]
 
     # Çıktıyı df e çevir.
-        df = pd.DataFrame(columns=["similar wines", "Top 6 common features in wine reviews"])
+        #df = pd.DataFrame(columns=["similar wines", "Top 6 common features in wine reviews"])
 
         for wine_idx in wine_idx_list:
 
@@ -261,7 +261,7 @@ with tab2:
 
     if st.button('Recommend my Wine with Variety'):
         st.write("Recommended with variety",recommend_by_variety(variety_option))
-        
+
 
 with tab1:
     st.header("Recommend with Unsupervised Learning")
@@ -309,7 +309,7 @@ with tab1:
 
 
     columns=vectorizer.get_feature_names_out()
-    
+
 
     k_clusters = 14
 
@@ -346,16 +346,16 @@ with tab1:
     def get_data():
         return []
 
-    
+
     form = st.form(key='my_form')
     user_input = form.text_input(label='Enter key words for your wine i.e fresh apple black tannin acid etc.')
     submit_button = form.form_submit_button(label='Submit')
     if submit_button:
         get_data().append(user_input)
-    
+
         get_data().append(user_input)
         data = [get_data()[0]]
-    
+
         pred3 = model.predict(vectorizer.transform(data))
         ww = df_new_clusters[pred3[0]].tolist()
         zf1=zipfile.ZipFile('winemag-data-130k-v2.csv.zip','r')
@@ -365,12 +365,12 @@ with tab1:
         desc = df.reset_index(drop=True)
 
 
-    
+
 
         seq = difflib.SequenceMatcher()
 
 
-        def ration(ww,df):    
+        def ration(ww,df):
             title=[]
             n = len(desc["description"])
             desc["description"] = desc["description"].apply(prepare_text)
