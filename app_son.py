@@ -367,7 +367,7 @@ with tab2:
 #plt.show()
 
 
-    k_clusters = 13
+    k_clusters = 14
 
     model = KMeans(n_clusters=k_clusters, init='k-means++', n_init=10, max_iter=600, tol=0.000001, random_state=0)
     model.fit(X_train)
