@@ -102,7 +102,7 @@ wine_df = pd.read_csv(zf.open('prepw.csv'))
     #     ###
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["About","By Descriptors", "By Variety", "By Title", "Game of Taste"])
-wine_df=pd.read_csv("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/preprocessed_wine_df_10_01_23.csv", index_col="Unnamed: 0")
+wine_df=pd.read_csv("preprocessed_wine_df_10_01_23.csv", index_col="Unnamed: 0")
 
 with tab1:
     st.header("Mission & Vision")
@@ -127,7 +127,7 @@ with tab4:
     wine_df["description"] = wine_df["description"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
 
 
-    list_title = wine_df["title"].head(25)
+    list_title = wine_df["title"]
 #print(list_title)
 
     title_option = st.selectbox(
@@ -299,8 +299,8 @@ with tab3:
         st.write("Recommended with variety",recommend_by_variety(variety_option))
         
 with tab2:
-    st.header("")
-    image = Image.open("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/homeplus1.jpg")
+    st.header("By Descriptors")
+    image = Image.open("homeplus1.jpg")
     col1, col2, col3 = st.columns([0.2, 5, 0.2])
     col2.image(image, use_column_width=True)
     
@@ -350,24 +350,10 @@ with tab2:
     columns=vectorizer.get_feature_names_out()
 
 
-# X_train=X_train.reshape(-1,1)
+
     from yellowbrick.cluster import KElbowVisualizer
-#k_clusters = 18
 
-#score = []
-#for i in range(1,k_clusters + 1):
- #   kmeans = KMeans(n_clusters=i,init='k-means++',max_iter=300,n_init=5,random_state=0)
-  #  kmeans.fit(X_train)
-   # score.append(kmeans.inertia_)
-#plt.plot(range(1,k_clusters + 1 ),score)
-#plt.title('The Elbow Method')
-#plt.xlabel('Number of clusters')
-#plt.ylabel('Score')
-#plt.savefig('elbow.png')
-#plt.show()
-
-
-    k_clusters = 13
+    k_clusters = 14
 
     model = KMeans(n_clusters=k_clusters, init='k-means++', n_init=10, max_iter=600, tol=0.000001, random_state=0)
     model.fit(X_train)
@@ -394,32 +380,12 @@ with tab2:
     #results_dict[f'Cluster {i}'] = terms_list
 
     df_new_clusters = pd.DataFrame.from_dict(results_dict)
-#df_new_clusters
 
 
-
-#df_new["title"] = df_new["title"].apply(prepare_text)
-
-
-#pred2 = model.predict(vectorizer.transform(new_docs))
-
-# pred2 = model.predict(vectorizer.transform(new_docs2))
-
-
-#user_input = [str(st.text_area('Enter key words for wine i.e fresh, red, black, tannin etc. ',''))]
-
-
-
-#new_docs2 = ['melon vanilla acidic tannin fresh fruit crisp']
     @st.cache(allow_output_mutation=True)
     def get_data():
         return []
 
-
-    #user_input = st.text_input("Enter key words for wine i.e fresh, red, black, tannin etc.",'melon tannic asidic fruit lime')
-
-    #if st.button("Add text"):
-     #   get_data().append(user_input)
     
     form = st.form(key='my_form')
     user_input = form.text_input(label='Enter key words for wine i.e fresh, red, black, tannin etc.')
@@ -454,26 +420,12 @@ with tab2:
             return pd.DataFrame(title[1:6])
         st.write(ration(ww,desc["description"]))
 
-        #if st.button('Recommend my Wine from key words'):
-         #   st.write(ration(ww,desc["description"]))
-
-
     
 
    
-    #st.write('Your selection for aroma is ', aroma_option)
-
-
-    
-
-   
-
-    #if st.button('Recommend my Wine with unsupervised'):
-        #print("Recommended with unsupervised ")
-        # unsuper.pred_n()
 
 with tab5:
-    st.header("")
+    st.header("Game of Taste")
     st.write('Turn the Wheel, Feel the Taste🍷')
     from matplotlib import pyplot as plt
     import pandas as pd
