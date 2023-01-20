@@ -8,7 +8,7 @@ import numpy as np
 import string
 from operator import itemgetter
 from collections import Counter, OrderedDict
-
+from zipfile import ZipFile
 
 import re
 import nltk
@@ -68,6 +68,8 @@ import difflib
 from fuzzywuzzy import fuzz
 from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
+import zipfile
+
 
 
 #!pip install streamlit-player
@@ -79,8 +81,11 @@ st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="cent
 
 st.title("Wine Recommender ")
 
-wine_df = pd.read_csv("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/preprocessed_wine_df_10_01_23.csv")
+zf=zipfile.ZipFile('prepw.csv.zip','r')
 
+zipfile.ZipFile.namelist(zf)
+
+wine_df = pd.read_csv(zf.open('prepw.csv'))
 
 ###
     #
@@ -101,7 +106,7 @@ wine_df=pd.read_csv("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streaml
 
 with tab1:
     st.header("Mission & Vision")
-    image = Image.open("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/logo-color1.png")
+    image = Image.open("logo-color1.png")
     st.image(image, width=150)
 
     st.caption("""**Alcohol is not your friend for sure but wine can accompany you. Whether health benefits of wine are debatable, why not enjoy a few glasses of wine time to time? Or every day, depending on your health and life conditions?
@@ -111,7 +116,7 @@ with tab1:
 
 with tab4:
     st.header("")
-    image = Image.open("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/Wine_Tasting_shutterstock_1061669315.jpg")
+    image = Image.open("Wine_Tasting_shutterstock_1061669315.jpg")
     col1, col2, col3 = st.columns([0.2, 5, 0.2])
     col2.image(image, use_column_width=True)
    
@@ -158,11 +163,11 @@ with tab4:
 
     if st.button('Recommend Me by Title'):
         #print("Recommended with title")
-        st.write("Recommended with title",recom_by_title(title_option, wine_df))
+        st.write("Recommended with title",recom_by_title(title_option, wine_df)[1])
 
 with tab3:
     st.header("")
-    image = Image.open("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/74d74bb6-1c80-4c93-b727-0ed31f6d5193.jpg")
+    image = Image.open("74d74bb6-1c80-4c93-b727-0ed31f6d5193.jpg")
     col1, col2, col3 = st.columns([0.2, 5, 0.2])
     col2.image(image, use_column_width=True)
     
@@ -428,10 +433,9 @@ with tab2:
 
         pred3 = model.predict(vectorizer.transform(data))
         ww = df_new_clusters[pred3[0]].tolist()
-
-
-        df=pd.read_csv("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/winemag-data-130k-v2.csv")
-
+        zf1=zipfile.ZipFile('winemag-data-130k-v2.csv.zip','r')
+        zipfile.ZipFile.namelist(zf1)
+        df=pd.read_csv(zf1.open('winemag-data-130k-v2.csv'))
         desc = df.reset_index(drop=True)
 
     
@@ -485,7 +489,7 @@ with tab5:
     ######################## Aroma & NonAroma Wheel/TreeMap Chart ###########################
 
 
-    ch = pd.read_excel("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/descriptor_mapping_v2.xlsx")
+    ch = pd.read_excel("descriptor_mapping_v2.xlsx")
     ch.head()
 
     nonaroma_ch = ch[ch["type"] == "nonaroma"]
