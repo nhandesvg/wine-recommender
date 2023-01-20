@@ -5,3 +5,5 @@ scikit-learn
 matplotlib
 fuzzywuzzy
 yellowbrick
+seaborn
+plotly.express
