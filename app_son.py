@@ -79,7 +79,7 @@ import zipfile
 
 st.set_page_config(page_title="Wine Recommender", page_icon="🍷", layout="centered") #mutlaka en başta olmak zorunda
 
-st.title("Wine Recommender ")
+st.title("Wine Recommender")
 
 zf=zipfile.ZipFile('prepw.csv.zip','r')
 
@@ -102,7 +102,7 @@ wine_df = pd.read_csv(zf.open('prepw.csv'))
     #     ###
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["About","By Descriptors", "By Variety", "By Title", "Game of Taste"])
-wine_df=pd.read_csv("preprocessed_wine_df_10_01_23.csv", index_col="Unnamed: 0")
+#wine_df=pd.read_csv("preprocessed_wine_df_10_01_23.csv.zip", index_col="Unnamed: 0")
 
 with tab1:
     st.header("Mission & Vision")
