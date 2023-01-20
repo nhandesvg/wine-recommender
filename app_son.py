@@ -106,7 +106,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["About","By Descriptors", "By Variety", 
 
 with tab1:
     st.header("Mission & Vision")
-    image = Image.open("logo-color1.png")
+    image = Image.open("imglogo.jpeg")
     st.image(image, width=150)
 
     st.caption("""**Alcohol is not your friend for sure but wine can accompany you. Whether health benefits of wine are debatable, why not enjoy a few glasses of wine time to time? Or every day, depending on your health and life conditions?
@@ -116,7 +116,7 @@ with tab1:
 
 with tab4:
     st.header("")
-    image = Image.open("Wine_Tasting_shutterstock_1061669315.jpg")
+    image = Image.open("imgtitle.jpeg")
     col1, col2, col3 = st.columns([0.2, 5, 0.2])
     col2.image(image, use_column_width=True)
    
@@ -167,7 +167,7 @@ with tab4:
 
 with tab3:
     st.header("")
-    image = Image.open("74d74bb6-1c80-4c93-b727-0ed31f6d5193.jpg")
+    image = Image.open("imgvari.jpeg")
     col1, col2, col3 = st.columns([0.2, 5, 0.2])
     col2.image(image, use_column_width=True)
     
@@ -300,7 +300,7 @@ with tab3:
         
 with tab2:
     st.header("")
-    image = Image.open("/Users/oykucankusbulan/Desktop/Projeler/WineProject/Streamlit/Data/homeplus1.jpg")
+    image = Image.open("imgdesc.jpeg")
     col1, col2, col3 = st.columns([0.2, 5, 0.2])
     col2.image(image, use_column_width=True)
     
