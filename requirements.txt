@@ -6,3 +6,4 @@ matplotlib
 fuzzywuzzy
 yellowbrick
 seaborn
+plotly.express
